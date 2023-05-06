@@ -38,15 +38,5 @@
     },
     "config": {
         "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "KraenzleRitter\\Sipper\\SipperServiceProvider"
-            ],
-            "aliases": {
-                "Sipper": "KraenzleRitter\\Sipper\\SipperFacade"
-            }
-        }
     }
 }

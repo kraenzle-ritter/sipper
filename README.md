@@ -1,10 +1,10 @@
-# Very short description of the package
+# Sipper: SIPs
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/kraenzle-ritter/sipper.svg?style=flat-square)](https://packagist.org/packages/kraenzle-ritter/sipper)
 [![Total Downloads](https://img.shields.io/packagist/dt/kraenzle-ritter/sipper.svg?style=flat-square)](https://packagist.org/packages/kraenzle-ritter/sipper)
 ![GitHub Actions](https://github.com/kraenzle-ritter/sipper/actions/workflows/main.yml/badge.svg)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+This small package is shared by Inge and Anton.
 
 ## Installation
 
@@ -17,7 +17,14 @@ composer require kraenzle-ritter/sipper
 ## Usage
 
 ```php
-// Usage description here
+$metadata = file_getcontents($file);
+$sipreader = new SipReader($metadata);
+
+$sipreader->xml;
+$sipreader->getDokumente();
+$sipreader->getDokumentByDateiRef($dateiRef);
+$sipreader->getDateiByDateiRef($dateiRef);
+$sipreader->getPathByDateiRef($dateiRef);
 ```
 
 ### Testing
@@ -30,23 +37,6 @@ composer test
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-### Security
-
-If you discover any security related issues, please email kraenzle@k-r.ch instead of using the issue tracker.
-
-## Credits
-
--   [Andreas Kraenzle](https://github.com/kraenzle-ritter)
--   [All Contributors](../../contributors)
-
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-## Laravel Package Boilerplate
-
-This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).

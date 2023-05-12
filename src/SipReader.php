@@ -18,6 +18,16 @@ class SipReader
         return $this->xml->xpath('//arelda:dokument');
     }
 
+    public function getDossiers()
+    {
+        return $this->xml->xpath('//arelda:dossier');
+    }
+
+    public function getFirstLevelDossiers()
+    {
+        return $this->xml->xpath('//arelda:ordnungssystemposition/arelda:dossier');
+    }
+
     public function getDokumentByDateiRef(string $dateiRef) : SimpleXMLElement
     {
         return $this->xml->xpath('//arelda:dateiRef[text()="'.$dateiRef.'"]/..')[0];
@@ -33,6 +43,14 @@ class SipReader
         $paths =  $this->xml->xpath('//arelda:datei[@id="'.$dateiRef.'"]/ancestor-or-self::*/arelda:name/text()');
 
         return join(DIRECTORY_SEPARATOR, $paths);
+    }
+
+    /**
+     * Compose the identifier of the parent for a dossier, which has to exist in Anton
+     */
+    public static function getParentIdentifier(SimpleXMLElement $dossier, string $prefix = '') : string
+    {
+        return $prefix . (string) $dossier->xpath('parent::*')[0]->nummer;
     }
 
 }
